@@ -39,7 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app',
+    'rest_framework'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'app.authentication.firebase.FirebaseAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,6 +88,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# firebase
+from firebase_admin import credentials, initialize_app
+from os import path
+
+cred = credentials.Certificate(path.join(BASE_DIR, "app/config/firebase-service-account.json"))
+initialize_app(cred)
 
 
 # Password validation

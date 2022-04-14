@@ -1,0 +1,9 @@
+.env
+media/
+db.sqlite3
+__pycache__/
+.DS_Store
+*.py[cod]
+try.py
+.vscode
+firebase-service-account.json
